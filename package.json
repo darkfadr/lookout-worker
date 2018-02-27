@@ -1,0 +1,67 @@
+{
+  "name": "project-title",
+  "version": "1.2.0",
+  "engines": {
+    "node": ">6.11.*"
+  },
+  "description": "Project Description",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "nf start api",
+    "api": "nodemon --exec babel-node src/index.js",
+    "test-prebuild": "git checkout master && npm version patch && git push",
+    "build-vscode": "rm -rf dist/ && cross-env node_modules/.bin/babel src/ --ignore=src/__mocks__ --out-dir=dist --source-maps",
+    "build": "babel src -d dist",
+    "clean": "del dist logs src/logs",
+    "clean:hard": "del dist node_modules",
+    "postbuild": "cp iisnode.yml Web.config package.json dist",
+    "test": "jest --runInBand",
+    "test:watch": "jest --watch",
+    "smoketest": "echo 'Smoke Test not implemented'"
+  },
+  "author": "",
+  "license": "ISC",
+  "jest": {
+    "testResultsProcessor": "./node_modules/jest-junit-reporter"
+  },
+  "dependencies": {
+    "Sentimental": "^1.0.1",
+    "amqp": "^0.2.6",
+    "axios": "^0.17.1",
+    "babel-core": "^6.26.0",
+    "babel-jest": "^22.4.1",
+    "body-parser": "^1.18.1",
+    "cors": "^2.8.4",
+    "express": "^4.15.4",
+    "express-correlation-id": "^1.0.2",
+    "express-list-endpoints": "^3.0.0",
+    "helmet": "^3.8.1",
+    "jest-junit-reporter": "^1.1.0",
+    "mongoose": "^4.13.6",
+    "morgan": "^1.9.0",
+    "senti": "^0.0.2",
+    "sentiment": "^4.1.0",
+    "sentiment-v2": "^1.0.2",
+    "sentimental": "^0.1.2",
+    "winston": "^2.4.0",
+    "winston-daily-rotate-file": "^1.7.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "cross-env": "5.1.1",
+    "del-cli": "^1.1.0",
+    "eslint": "^4.9.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-config-prettier": "^2.6.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-prettier": "^2.3.1",
+    "foreman": "^2.0.0",
+    "jest": "21.2.1",
+    "newman": "^3.8.3",
+    "nodemon": "^1.12.1",
+    "prettier": "^1.7.4"
+  }
+}
