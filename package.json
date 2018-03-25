@@ -8,6 +8,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "nf start api worker:1",
+    "job": "nf start worker",
     "api": "nodemon --exec babel-node src/index.js",
     "worker": "nodemon --exec babel-node src/worker.js",
     "test-prebuild": "git checkout master && npm version patch && git push",
