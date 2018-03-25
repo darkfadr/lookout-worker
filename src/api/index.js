@@ -20,7 +20,7 @@ app.use(cors());
 app.use(helmet());
 app.use(correlator());
 app.use(morgan('dev', {stream: log.stream}));
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Routes

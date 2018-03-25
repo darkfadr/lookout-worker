@@ -1,11 +1,11 @@
 import mongoose from 'mongoose';
 import semver from 'semver';
 
-const { MONGO_URI='', APP_NAME} = process.env;
+const { MONGO_URI='mongodb://', APP_NAME} = process.env;
 mongoose.Promise = global.Promise;
 
 // configure mongodb
-mongoose.connect(MONGO_URI, { useMongoClient: true });
+mongoose.connect(MONGO_URI, {useMongoClient: true});
 
 mongoose.connection.on('open', err =>
   console.log(`${APP_NAME} is now connected to the Mongo Database`));

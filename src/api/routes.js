@@ -1,15 +1,17 @@
 import log from '../logger';
 import router from './utils';
-import { UserController } from './controllers';
-
-const temp = (req, res) => res.json({status: 'success', msg: 'Method not yet implemented'});
+import { CaseController, AlertController } from './controllers';
 
 router.map({
-  '/user/:id': {
-    get: UserController.findById,
-    post: temp
+  '/case': {
+    get: CaseController.findAll,
+    post: CaseController.create
   },
-  '/healthcheck': {get: temp}
+  '/detect': {post: CaseController.detect},
+  '/alert':{
+    get: AlertController.findAll,
+    post: AlertController.create
+  },
 });
 
 export default router;

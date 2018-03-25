@@ -12,12 +12,12 @@
     "test-prebuild": "git checkout master && npm version patch && git push",
     "build-vscode": "rm -rf dist/ && cross-env node_modules/.bin/babel src/ --ignore=src/__mocks__ --out-dir=dist --source-maps",
     "build": "babel src -d dist",
-    "clean": "del dist logs src/logs",
+    "clean": "del dist",
     "clean:hard": "del dist node_modules",
-    "postbuild": "cp iisnode.yml Web.config package.json dist",
+    "postbuild": "cp  package.json dist",
     "test": "jest --runInBand",
     "test:watch": "jest --watch",
-    "smoketest": "echo 'Smoke Test not implemented'"
+    "deploy": "now --dotenv"
   },
   "author": "",
   "license": "ISC",
@@ -25,9 +25,10 @@
     "testResultsProcessor": "./node_modules/jest-junit-reporter"
   },
   "dependencies": {
+    "@turf/helpers": "^6.1.1",
     "Sentimental": "^1.0.1",
     "amqp": "^0.2.6",
-    "axios": "^0.17.1",
+    "axios": "^0.18.0",
     "babel-core": "^6.26.0",
     "babel-jest": "^22.4.1",
     "body-parser": "^1.18.1",
@@ -35,9 +36,11 @@
     "express": "^4.15.4",
     "express-correlation-id": "^1.0.2",
     "express-list-endpoints": "^3.0.0",
+    "faker": "^4.1.0",
+    "foreman": "^2.0.0",
     "helmet": "^3.8.1",
     "jest-junit-reporter": "^1.1.0",
-    "mongoose": "^4.13.6",
+    "mongoose": "4.*.*",
     "morgan": "^1.9.0",
     "senti": "^0.0.2",
     "sentiment": "^4.1.0",
@@ -58,9 +61,7 @@
     "eslint-config-prettier": "^2.6.0",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-prettier": "^2.3.1",
-    "foreman": "^2.0.0",
     "jest": "21.2.1",
-    "newman": "^3.8.3",
     "nodemon": "^1.12.1",
     "prettier": "^1.7.4"
   }
