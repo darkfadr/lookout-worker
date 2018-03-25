@@ -7,7 +7,7 @@ const plate = axios.create({baseURL, timeout: 150000});
 
 
 rabbit.on('ready', () => {
-  connection.queue('screenshot', function (q) {
+  rabbit.queue('screenshot', function (q) {
       // Catch all messages
       q.bind(BIND_KEY);
       // Receive messages
